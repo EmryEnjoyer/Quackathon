@@ -7,22 +7,23 @@ const getAllCommands = (basedir) => {
     const foldersPath = path.join(basedir, 'commands');
     const commandFolders = fs.readdirSync(foldersPath);
 
-    for (const folder of commandFolders) {
+    commandFolders.forEach((folder) => {
         const commandsPath = path.join(foldersPath, folder);
         const commandFiles = fs.readdirSync(commandsPath).filter(file => file.endsWith('.js'));
-        for (const file of commandFiles) {
+        commandFiles.forEach((file) => {
             const filePath = path.join(commandsPath, file);
             const command = require(filePath);
 
             if ('data' in command && 'execute' in command) {
                 commands.push(command);
-            } else {
+            }
+            else {
                 console.log(`[WARN] The command in ${filePath} is missing "data" or "execute", skipping.`);
             }
-        }
-    }
+        });
+    });
     return commands;
-}
+};
 
 module.exports = {
     getAllCommands: getAllCommands,
