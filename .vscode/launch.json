@@ -19,7 +19,7 @@
         ],
         "program": "${workspaceFolder}\\bot\\index.js",
         "env": {
-            "DISCORD_TOKEN": "MTA5Njk0OTMwMzM5NTc1ODE0MA.Gt_IXy.H-7U0J7LIjgMpOJs9BxSN8nRU0yC6zY7twffog",
+            "DISCORD_TOKEN": "<Insert Discord Token Here>",
             "CLIENT_ID": "1096949303395758140",
             "GUILD_ID": "1096591917527076954"
         }
