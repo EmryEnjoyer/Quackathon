@@ -2,6 +2,7 @@
 node_modules/
 .vscode/*
 .env
+*.db
 
 # compiled output
 /api/dist
@@ -34,7 +35,3 @@ lerna-debug.log*
 
 # IDE - VSCode
 .vscode/*
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
