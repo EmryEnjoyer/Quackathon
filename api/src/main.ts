@@ -5,10 +5,14 @@ import { queries } from './Data/Queries/setupQueries';
 import { executeQueries } from './utils/DbUtils';
 import * as dotenv from 'dotenv';
 import { Database } from 'sqlite3';
+import { WINSTON_MODULE_NEST_PROVIDER } from 'nest-winston';
 
 async function bootstrap() {
+
+  // https://stackoverflow.com/questions/61066950/unable-to-inject-winstons-logger-instance-with-nestjs
   const app = await NestFactory.create(AppModule);
 
+  app.useLogger(app.get(WINSTON_MODULE_NEST_PROVIDER))
   // Get all the things from the .env file
   dotenv.config();
   const connString = process.env.CONNECTION_STRING;
@@ -24,6 +28,7 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, config); 
   SwaggerModule.setup('api', app, document);
 
+  
   await app.listen(3000);
 }
 bootstrap();
