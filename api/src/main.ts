@@ -1,10 +1,20 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
+import { queries } from './Data/Queries/setupQueries';
+import { executeQueries } from './utils/DbUtils';
+import * as dotenv from 'dotenv';
+import { Database } from 'sqlite3';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
+  // Get all the things from the .env file
+  dotenv.config();
+  const connString = process.env.CONNECTION_STRING;
+  const db = new Database(connString);
+  executeQueries(db, queries);
+  
   // Swagger UI setup
   const config = new DocumentBuilder()
     .setTitle('Quackabot API')
