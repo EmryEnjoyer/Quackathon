@@ -1,0 +1,18 @@
+:fire: -- QUACKATHON CHALLENGE -- :fire:
+Week: 04-14-2023
+
+What's up, Quack Pack! DJD is coming at you with a brand new build challenge! Quackathons are a bit like mini-hackathons meant to keep our skills sharp, inspire portfolio pieces, and encourage connection within our community. This challenge involves several skillsets, so I recommend hitting up the NEW quack-teams  channel to network and share the knowledge you can bring to the team. Even if you do not finish the challenge, please submit your work so we can cheer on your effort. It's not about perfection -- it's about learning!
+
+:calendar: DEADLINE TO SUBMIT:
+EDIT UPDATED DEADLINE: Sunday, April 30, 2023 @ 11:59pm PDT
+Sunday, April 23, 2023 @ 11:59pm PDT 
+
+:mega: RULES:
+1. One submission per team.
+2. Teams must consist of 2-4 DJD members.
+3. Code plagiarism is not okay. Please don't steal.
+4. For this submission, your code needs to be deployed and additional steps will be necessary for testing.
+5. Submissions must also include a link to your code's repo.
+6. You may edit your submission up until the deadline.
+7. Keep it professional and appropriate.
+8. Challenge requirements are a minimum for eligibility -- If you'd like to build more, feel free to do so! Just be sure not to overstretch or overcommit your team.

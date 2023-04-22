@@ -17,7 +17,6 @@ export const queries = {
     CREATE TABLE IF NOT EXISTS quackathon (
         id INTEGER PRIMARY KEY NOT NULL DEFAULT rowid,
         name VARCHAR(350) NOT NULL DEFAULT 'Quackathon',
-        boilerplate TEXT NOT NULL DEFAULT '',
         challenge TEXT NOT NULL DEFAULT '',
         due INTEGER NOT NULL,
         status INTEGER NOT NULL REFERENCES quackathon_status(id) DEFAULT 0
@@ -65,6 +64,19 @@ export const queries = {
         user_id INTEGER NOT NULL,
         is_alive INTEGER NOT NULL DEFAULT 0 CHECK (is_alive = 0 OR is_alive = 1),
         PRIMARY KEY (team_id, user_id)
+    );
+    `,
+    createConfigTable: `
+    CREATE TABLE IF NOT EXISTS config (
+        key VARCHAR(100) PRIMARY KEY,
+        value TEXT
+    );
+    `,
+    initializeConfigTable: `
+    INSERT OR IGNORE INTO config VALUES
+    (
+        'boilerplate',
+        '${process.env.BOILERPLATE_FILE}'
     );
     `
 }
