@@ -3,9 +3,12 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { WinstonModule, utilities } from 'nest-winston';
 import * as winston from 'winston';
+import { QuackathonModule } from './Quackathon/quackathon.module';
 
 @Module({
-  imports: [WinstonModule.forRoot({exitOnError: false, 
+  imports: [
+    QuackathonModule,
+    WinstonModule.forRoot({exitOnError: false, 
     level: 'info', 
     transports: [
       new winston.transports.Console({ 

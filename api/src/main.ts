@@ -11,7 +11,7 @@ async function bootstrap() {
 
   const app = await NestFactory.create(AppModule);
 
-  app.useLogger(app.get(WINSTON_MODULE_NEST_PROVIDER))
+  app.useLogger(app.get(WINSTON_MODULE_NEST_PROVIDER));
   // Get all the things from the .env file
   dotenv.config();
   const connString = process.env.CONNECTION_STRING;
@@ -24,8 +24,10 @@ async function bootstrap() {
     .setDescription('API to manage member data for Qackabot')
     .setVersion('1.0')
     .build();
-  const document = SwaggerModule.createDocument(app, config); 
-  SwaggerModule.setup('api', app, document);
+  
+  const appDocument = SwaggerModule.createDocument(app, config); 
+
+  SwaggerModule.setup('api', app, appDocument);
 
   
   await app.listen(3000);
