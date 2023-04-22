@@ -1,8 +1,8 @@
 *.sh
 node_modules/
-.vscode/*
 .env
 *.db
+
 
 # compiled output
 /api/dist
@@ -32,6 +32,8 @@ lerna-debug.log*
 *.launch
 .settings/
 *.sublime-workspace
+
+
 
 # IDE - VSCode
 .vscode/*
