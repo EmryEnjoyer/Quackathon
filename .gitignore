@@ -1,6 +1,7 @@
 *.sh
 node_modules/
 .env
+*.db
 
 
 # compiled output
@@ -35,4 +36,4 @@ lerna-debug.log*
 
 
 # IDE - VSCode
-.vscode/
+.vscode/*
