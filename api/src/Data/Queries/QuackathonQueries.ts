@@ -8,6 +8,6 @@ SELECT
 FROM
     quackathon
 ORDER BY
-    id
+    id DESC
 LIMIT 1;
 `
