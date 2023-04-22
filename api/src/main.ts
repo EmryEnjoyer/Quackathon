@@ -9,7 +9,6 @@ import { WINSTON_MODULE_NEST_PROVIDER } from 'nest-winston';
 
 async function bootstrap() {
 
-  // https://stackoverflow.com/questions/61066950/unable-to-inject-winstons-logger-instance-with-nestjs
   const app = await NestFactory.create(AppModule);
 
   app.useLogger(app.get(WINSTON_MODULE_NEST_PROVIDER))
