@@ -1,7 +1,7 @@
 export class Quackathon {
-    id: number;
-    name: string;
-    challenge: string;
-    due: number;
-    status: number;
+    public id!: number;
+    public name!: string;
+    public challenge?: string;
+    public due!: number;
+    public status!: number;
 }
