@@ -19,6 +19,16 @@ export class QuackathonController {
         }
     }
 
+    @Get('quackathon/latest')
+    async getLatestQuackathon() {
+        try {
+            this.logger.log("Calling getLatestQuackathon()", {Controller: QuackathonController.name})
+            return this.service.getLatestQuackathon();
+        } catch (err) {
+            this.logger.error("Calling getLatestQuackathon()", err, {Controller: QuackathonController.name});
+        }
+    }
+
     @Get('quackathon/:quackathonId')
     async getQuackathonById(@Param('quackathonId') id: number) {
         try {
