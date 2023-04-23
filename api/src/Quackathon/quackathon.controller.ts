@@ -39,7 +39,7 @@ export class QuackathonController {
         }
     }
 
-    @Get('quackathon/:quackathonName')
+    @Get('quackathon/get/:quackathonName')
     async getQuackathonByName(@Param('quackathonName') name: string) {
         try {
             this.logger.log("Calling getQuackathonByName()", {controller: QuackathonController})
@@ -59,7 +59,7 @@ export class QuackathonController {
         }
     }
 
-    @Post('quackathon/setName')
+    @Post('quackathon/set/setName')
     async setQuackathonName (@Body() name: string) {
         try {
             this.logger.log("Calling setQuackathonName()", {controller: QuackathonController})
@@ -69,7 +69,7 @@ export class QuackathonController {
         }
     }
 
-    @Post('quackathon/setChallenge')
+    @Post('quackathon/set/setChallenge')
     async setQuackathonChallenge (@Body() challenge: string) {
         try {
             this.logger.log("Calling setQuackathonChallenge()", {controller: QuackathonController})
@@ -100,13 +100,14 @@ export class QuackathonController {
         }
     }
 
-    @Post('quackathon/boilerplate')
+    @Post('quackathon/set/boilerplate')
     async setBoilerplate (@Body() boilerplate: string) {
         try {
             this.logger.log("Calling setBoilerplate()", {controller: QuackathonController})
             return await this.service.setBoilerplate(boilerplate);
         } catch (err) {
             this.logger.error("Calling setBoilerplate()", err, {controller: QuackathonController})
+            throw err;
         }
     }
 }
