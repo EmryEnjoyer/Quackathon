@@ -1,9 +1,10 @@
+import { Quackathon } from "src/dto/Quackathon";
 import { QuackathonController } from "./quackathon.controller";
 import { QuackathonService } from "./quackathon.service";
 
 describe('QuackathonController', () => {
-    let quackathonController: QuackathonController;
-    let quackathonService: QuackathonService;
+    let quackathonController;
+    let quackathonService;
     beforeEach(() => {
         quackathonService = new QuackathonService({
             debug: jest.fn(),
@@ -17,19 +18,36 @@ describe('QuackathonController', () => {
 
     describe('QuackathonInteractionsBasic', async () => {
         const mockQuack = {
-            id: 10,
             name: 'mock quack',
             challenge: 'mock challenge',
             due: 0,
             status: 0
-        }
+        };
         
 
         expect(await quackathonController.createQuackathon(mockQuack)).toHaveBeenCalled();
-        expect(await quackathonController.getAllQuackathons()).toContain(mockQuack);
-        expect(await quackathonController.getLatestQuackathon()).toBe(mockQuack);
-        expect(await quackathonController.getQuackathonById(mockQuack.id)).toBe(mockQuack);
-        expect(await quackathonController.getQuackathonByName(mockQuack.name)).toBe(mockQuack);
-        expect(await quackathonController.deleteQuackathon(mockQuack)).toHaveBeenCalled();
+
+        const fullQuack = await quackathonController.getLatestQuackathon();
+        
+        expect(([fullQuack] as Partial<Quackathon>[]).map((q) => {
+            return {
+                name: q.name, 
+                challenge: q.challenge,
+                due: q.due,
+                status: q.status
+            };
+        })[0]).toBe(mockQuack);
+
+        expect(await quackathonService.getQuackathonById(`${fullQuack.id}`))
+            .toBe(fullQuack);
+
+        expect(await quackathonService.getQuackathonByName(fullQuack.name))
+            .toBe(fullQuack);
+
+        fullQuack.name = "ChangedName";
+
+        await quackathonService.updateQuackathon(fullQuack);
+
+        expect(await quackathonService.getQuackathonById(`${fullQuack}`)).toBe(fullQuack);
     })
 })

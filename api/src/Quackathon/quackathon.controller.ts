@@ -30,7 +30,7 @@ export class QuackathonController {
     }
 
     @Get('quackathon/:quackathonId')
-    async getQuackathonById(@Param('quackathonId') id: number) {
+    async getQuackathonById(@Param('quackathonId') id: string) {
         try {
             this.logger.log("Calling getQuackathonById()", {controller: QuackathonController})
             return this.service.getQuackathonById(id);
@@ -49,8 +49,8 @@ export class QuackathonController {
         }
     }
 
-    @Post('quackathon')
-    async createQuackathon (@Body() quackathon: Quackathon) {
+    @Post('quackathon/create')
+    async createQuackathon (@Body() quackathon: Partial<Quackathon>) {
         try {
             this.logger.log("Calling createQuackathon()", {controller: QuackathonController})
             return this.service.createQuackathon(quackathon);
@@ -59,23 +59,12 @@ export class QuackathonController {
         }
     }
 
-    @Post('quackathon/set/setName')
-    async setQuackathonName (@Body() name: string) {
+    @Post('quackathon/update')
+    async updateQuackathon(@Body() quackathon: Quackathon) {
         try {
-            this.logger.log("Calling setQuackathonName()", {controller: QuackathonController})
-            return this.service.setQuackathonName(name);
+            await this.service.updateQuackathon(quackathon);
         } catch (err) {
-            this.logger.error("Calling setQuackathonName()", err, {controller: QuackathonController.name});
-        }
-    }
-
-    @Post('quackathon/set/setChallenge')
-    async setQuackathonChallenge (@Body() challenge: string) {
-        try {
-            this.logger.log("Calling setQuackathonChallenge()", {controller: QuackathonController})
-            return this.service.setQuackathonChallenge(challenge);
-        } catch (err) {
-            this.logger.error("Calling setQuackathonChallenge()", err, {controller: QuackathonController.name});
+            this.logger.error("Calling updateQuackathon()", err, {controller: QuackathonController.name});
         }
     }
 
