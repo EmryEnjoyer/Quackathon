@@ -10,7 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "api": "0.0.1",
+    "api": "^5.0.8",
     "cross-env": "5.0.5",
     "discord.js": "^14.9.0",
     "jest": "^29.5.0"
